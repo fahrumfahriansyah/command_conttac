@@ -80,8 +80,9 @@ function removeContact(nama) {
     })
     if (contact.length === newcontact.length) {
         console.log(chalk.red(`maaf nama yang anda masukan tidak terdaftar ${list()}`));
+    } else {
+        fs.writeFileSync('data/contact.json', JSON.stringify(newcontact))
+        console.log(chalk.red(`${nama} sudah di hapus`));
     }
-    fs.writeFileSync('data/contact.json', JSON.stringify(newcontact))
-    console.log(chalk.red(`${nama} sudah di hapus`));
 }
 module.exports = { data, list, search, removeContact }
